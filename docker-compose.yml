@@ -1,0 +1,27 @@
+services:
+  backend:
+    build:
+      context: ./To_Do_App_API
+      dockerfile: Dockerfile
+    image: todo-api:1.0
+    container_name: todo-api
+    restart: unless-stopped
+    ports:
+      - "5001:5001"
+    env_file:
+      - ./To_Do_App_API/.env
+    environment:
+      - PORT=5001
+      - CLIENT_URL=http://localhost:5173
+
+  frontend:
+    build:
+      context: ./To_Do_App_UI
+      dockerfile: Dockerfile
+    image: todo-ui:1.0
+    container_name: todo-ui
+    restart: unless-stopped
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend

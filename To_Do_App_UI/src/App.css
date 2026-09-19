@@ -1,0 +1,13 @@
+.HeaderContainer {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.MainContainer {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
