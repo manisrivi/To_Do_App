@@ -1,0 +1,21 @@
+services:
+  backend:
+    image: ghcr.io/manisrivi/to_do_app/todo-api:latest
+    container_name: todo-api-prod
+    restart: unless-stopped
+    ports:
+      - "5001:5001"
+    env_file:
+      - ./To_Do_App_API/.env
+    environment:
+      - PORT=5001
+      - CLIENT_URL=http://localhost:5173
+
+  frontend:
+    image: ghcr.io/manisrivi/to_do_app/todo-ui:latest
+    container_name: todo-ui-prod
+    restart: unless-stopped
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
