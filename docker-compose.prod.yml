@@ -1,5 +1,6 @@
 services:
   backend:
+    platform: linux/amd64
     image: ghcr.io/manisrivi/to_do_app/todo-api:latest
     container_name: todo-api-prod
     restart: unless-stopped
@@ -12,6 +13,7 @@ services:
       - CLIENT_URL=http://localhost:5173
 
   frontend:
+    platform: linux/amd64
     image: ghcr.io/manisrivi/to_do_app/todo-ui:latest
     container_name: todo-ui-prod
     restart: unless-stopped
